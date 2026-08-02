@@ -1,0 +1,27 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Java / Maven
+**/target/
+*.class
+
+# Node / Frontend
+**/node_modules/
+**/dist/
+**/build/
+
+# Python
+**/__pycache__/
+*.pyc
+.venv/
+**/.pytest_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
