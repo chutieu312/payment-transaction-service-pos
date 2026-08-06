@@ -4,13 +4,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fpt.payments.dto.TransferRequest;
 import com.fpt.payments.dto.TransferResponse;
 import com.fpt.payments.enums.TransactionStatus;
+import com.fpt.payments.security.JwtUtil;
 import com.fpt.payments.service.TransactionService;
 import com.fpt.payments.repository.TransactionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -25,19 +30,25 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(TransactionController.class)
+@Import(TransactionControllerTest.MethodSecurityConfig.class)
 class TransactionControllerTest {
+
+    @TestConfiguration
+    @EnableMethodSecurity
+    static class MethodSecurityConfig {}
 
     @Autowired MockMvc mockMvc;
     @Autowired ObjectMapper objectMapper;
     @MockBean TransactionService transactionService;
     @MockBean TransactionRepository transactionRepository;
+    @MockBean JwtUtil jwtUtil;
 
     @Test
-    void initiateTransfer_withoutAuth_returns401() throws Exception {
+    void initiateTransfer_withoutAuth_returns403() throws Exception {
         mockMvc.perform(post("/api/transfers/" + UUID.randomUUID())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{}"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
     }
 
     @Test
