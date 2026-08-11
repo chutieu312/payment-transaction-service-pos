@@ -9,19 +9,26 @@ A full-stack, event-driven system built with **Java 21 / Spring Boot 3**, **Pyth
 
 ## Table of Contents
 
-1. [Prerequisites](#prerequisites)
-2. [Getting Started](#getting-started)
-3. [Service Map & Credentials](#service-map--credentials)
-4. [Demo Accounts](#demo-accounts)
-5. [Database Access](#database-access)
-6. [Using the Frontend](#using-the-frontend)
-7. [Using the REST API](#using-the-rest-api)
-8. [How the Transfer Flow Works](#how-the-transfer-flow-works)
-9. [Fraud Detection Rules](#fraud-detection-rules)
-10. [Running Tests](#running-tests)
-11. [Stopping & Resetting](#stopping--resetting)
-12. [Architecture](#architecture)
-13. [JD Skills Demonstrated](#jd-skills-demonstrated)
+- [PAT Financial Operations Service (PAT-FOS)](#pat-financial-operations-service-pat-fos)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Getting Started](#getting-started)
+    - [Start / Stop (after first build)](#start--stop-after-first-build)
+  - [Service Map \& Credentials](#service-map--credentials)
+  - [Demo Accounts](#demo-accounts)
+  - [Database Access](#database-access)
+    - [PostgreSQL — Adminer (http://localhost:8888)](#postgresql--adminer-httplocalhost8888)
+    - [MongoDB — Mongo Express (http://localhost:8081)](#mongodb--mongo-express-httplocalhost8081)
+    - [Redis](#redis)
+  - [Using the Frontend](#using-the-frontend)
+  - [Using the REST API](#using-the-rest-api)
+    - [Key endpoints](#key-endpoints)
+  - [How the Transfer Flow Works](#how-the-transfer-flow-works)
+  - [Fraud Detection Rules](#fraud-detection-rules)
+  - [Running Tests](#running-tests)
+  - [Stopping \& Resetting](#stopping--resetting)
+  - [Architecture](#architecture)
+  - [JD Skills Demonstrated](#jd-skills-demonstrated)
 
 ---
 
@@ -414,3 +421,13 @@ docker compose logs transaction-service --tail=50
 | Docker multi-stage builds | `transaction-service/Dockerfile`, `frontend/Dockerfile` |
 | Docker Compose orchestration | `docker-compose.yml` (11 services with healthchecks) |
 | GitHub Actions CI/CD | `.github/workflows/ci.yml` |
+
+---
+
+All services are up!
+Frontend: http://localhost:3000
+Transaction API: http://localhost:8080
+Fraud API: http://localhost:8090
+Kafka UI: http://localhost:8082
+Adminer (Postgres): http://localhost:8888
+Mongo Express: http://localhost:8081
