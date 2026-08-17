@@ -23,13 +23,22 @@ wait_for_url() {
 cd "$(dirname "$0")"
 
 log "Building and starting all services..."
-docker compose -f "$COMPOSE_FILE" up --build -d
+if docker compose -f "$COMPOSE_FILE" up --build -d; then
+  initial_start_failed=false
+else
+  initial_start_failed=true
+fi
 
 # Restart Zookeeper if Kafka exited due to a stale ephemeral node (NodeExistsException)
 if [[ "$(docker compose -f "$COMPOSE_FILE" ps --status exited -q kafka 2>/dev/null)" != "" ]]; then
   log "Kafka exited — clearing stale Zookeeper node and retrying..."
   docker compose -f "$COMPOSE_FILE" restart zookeeper
-  docker compose -f "$COMPOSE_FILE" up -d kafka transaction-service fraud-service frontend
+  # ZooKeeper restores sessions after a restart. Give the old broker session
+  # enough time to expire before Kafka tries to register broker ID 1 again.
+  sleep 20
+  docker compose -f "$COMPOSE_FILE" up -d kafka kafka-ui transaction-service fraud-service frontend
+elif [[ "$initial_start_failed" == true ]]; then
+  fail "Docker Compose failed before the application services could start"
 fi
 
 # Wait for the two app services (infra health checks are handled by depends_on)
