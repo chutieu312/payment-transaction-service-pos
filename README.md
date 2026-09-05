@@ -1,7 +1,6 @@
 # PAT Financial Operations Service (PAT-FOS)
 
-> **Part of the Product Agility Tools (PAT) Platform** — JP Morgan Chase  
-> A microservice within PAT that manages team budget allocations, processes inter-team budget transfers, and uses an event-driven anomaly detection engine to flag unauthorized or unusual spending patterns across 2,000+ internal teams.
+> A microservice within PAT that manages team budget allocations, processes inter-team budget transfers, and uses an event-driven anomaly detection engine to flag unauthorized or unusual spending patterns across internal teams.
 
 A full-stack, event-driven system built with **Java 21 / Spring Boot 3**, **Python 3.12 / FastAPI**, **React 18 / TypeScript**, **Apache Kafka**, **PostgreSQL**, **MongoDB**, and **Redis** — deployed via Docker Compose.
 
