@@ -6,10 +6,35 @@ A full-stack, event-driven system built with **Java 21 / Spring Boot 3**, **Pyth
 
 ---
 
+## Screenshots
+
+| Frontend — Login | Frontend — Account Dashboard |
+|---|---|
+| ![Frontend login](docs/screenshots/frontend-login.png) | ![Frontend dashboard](docs/screenshots/frontend-dashboard.png) |
+
+| Frontend — New Transfer | Frontend — Transaction History |
+|---|---|
+| ![Transfer form](docs/screenshots/frontend-transfer-form.png) | ![Transaction history](docs/screenshots/frontend-history.png) |
+
+| Frontend — Admin Panel (fraud decisions) | Swagger UI — Transaction Service API |
+|---|---|
+| ![Admin panel](docs/screenshots/frontend-admin-panel.png) | ![Swagger UI](docs/screenshots/swagger-ui.png) |
+
+| FastAPI Docs — Fraud Service | Kafka UI — Topics |
+|---|---|
+| ![Fraud service docs](docs/screenshots/fraud-service-docs.png) | ![Kafka UI topics](docs/screenshots/kafka-ui-topics.png) |
+
+| Adminer — PostgreSQL `accounts` table | Mongo Express — Databases |
+|---|---|
+| ![Adminer accounts table](docs/screenshots/adminer-accounts.png) | ![Mongo Express](docs/screenshots/mongo-express.png) |
+
+---
+
 ## Table of Contents
 
 - [PAT Financial Operations Service (PAT-FOS)](#pat-financial-operations-service-pat-fos)
   - [Table of Contents](#table-of-contents)
+  - [Screenshots](#screenshots)
   - [Prerequisites](#prerequisites)
   - [Getting Started](#getting-started)
     - [Start / Stop (after first build)](#start--stop-after-first-build)
